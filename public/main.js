@@ -2820,7 +2820,7 @@ const init = () => {
             <div class="container">
               <h1 id="docs">ドキュメント</h1>
               <ul>
-                <li><a href="./docs/index.html" target="_blank">サンプル</a></li>
+                <li><a href="./docs/index.html" target="_blank">Asciidoc</a></li>
               </ul>
               <h1>開発</h1>
               <div class="py-3">
