@@ -1,0 +1,56 @@
+// 貸会議室運営事業ドメイン
+Domain MeetingRoomRental{
+	domainVisionStatement = "効率化によるサービス品質向上と会員管理の強化によるサブスクリプションサービスで収益を多様化することで貸会議室運営業務を新たな収益の柱に成長させたい"
+
+	Subdomain ReservationManagementDomain {
+		type = CORE_DOMAIN
+	}
+
+	Subdomain UserManagementDomain {
+		type = GENERIC_SUBDOMAIN
+	}
+
+}
+
+// MeetingRoomReservationSystem
+ContextMap MrsMap {
+	contains AuthContext
+	contains ReservationContext
+
+	AuthContext [SK]<->[SK] ReservationContext
+}
+
+BoundedContext AuthContext {
+	Module user {
+		basePackage = mrs.domain.model.auth
+		Aggregate User {
+			Entity User
+			ValueObject UserId
+			ValueObject UserName
+			enum RoleName {
+				ADMIN,
+				USER
+			}
+			Entity Administrator
+			Entity Member
+		}
+	}
+}
+
+BoundedContext ReservationContext {
+	Module reservation {
+		basePackage = mrs.domain.model.reservation
+		Aggregate Reservation{
+			Entity Reservation
+			ValueObject ReservationId
+			ValueObject ReservedTime
+			ValueObject ReservedDate
+			Entity MeetingRoom
+			ValueObject RoomId
+			Entity ReservableRoom
+			ValueObject ReservableRoomId
+			ValueObject ReservableRoomList
+		}
+	}
+}
+
