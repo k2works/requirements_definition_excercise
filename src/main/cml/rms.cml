@@ -16,8 +16,12 @@ Domain MeetingRoomRental{
 ContextMap MrsMap {
 	contains AuthContext
 	contains ReservationContext
+	contains FacilityContext
 
 	AuthContext [SK]<->[SK] ReservationContext
+	AuthContext [SK]<->[SK] FacilityContext
+
+	ReservationContext [SK]<->[SK] FacilityContext
 }
 
 BoundedContext AuthContext {
@@ -45,11 +49,19 @@ BoundedContext ReservationContext {
 			ValueObject ReservationId
 			ValueObject ReservedTime
 			ValueObject ReservedDate
-			Entity MeetingRoom
-			ValueObject RoomId
 			Entity ReservableRoom
 			ValueObject ReservableRoomId
 			ValueObject ReservableRoomList
+		}
+	}
+}
+
+BoundedContext FacilityContext {
+	Module facility {
+		basePackage = mrs.domain.model.facility
+		Aggregate MeetingRoom {
+			Entity MeetingRoom
+			ValueObject RoomId
 		}
 	}
 }
