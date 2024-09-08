@@ -397,3 +397,35 @@ title ドメイン
 
 @endmindmap
 ```
+
+## 問題
+
+### 問題文
+
+### ロジック
+
+#### 現状分析
+
+```plantuml
+@startmindmap
+
+@endmindmap
+```
+
+#### 課題設定
+
+```plantuml
+@startmindmap
+
+@endmindmap
+```
+
+#### 解決策
+
+```plantuml
+@startmindmap
+
+@endmindmap
+```
+
+### 解答
